@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carol Chen, MD — Psychiatry, Beverly Hills</title>
+<meta name="description" content="Carol Chen, MD is a board-certified psychiatrist in Beverly Hills, California, specializing in child, adolescent, and adult psychiatry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1&family=Karla:ital,wght@0,300..700;1,300..600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F8F6F2;      /* warm shell white */
+    --mist:#E9F0F0;       /* sea mist */
+    --glass:#B9DCDF;      /* sea glass */
+    --tide:#7FB0C6;       /* shallow tide */
+    --deep:#2E6379;       /* deep water */
+    --ink:#16333D;        /* wet slate */
+    --sand:#E0CBB2;       /* dry sand — hairlines only */
+
+    --maxw:1120px;
+    --gut:clamp(1.25rem, 5vw, 4rem);
+
+    --display:"Fraunces", Georgia, serif;
+    --body:"Karla", system-ui, -apple-system, sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+
+  html{scroll-behavior:smooth}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:clamp(1rem,0.97rem + 0.15vw,1.0625rem);
+    line-height:1.72;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:var(--display);
+    font-variation-settings:"opsz" 90,"SOFT" 60,"WONK" 1;
+    font-weight:300;
+    line-height:1.06;
+    letter-spacing:-0.021em;
+    margin:0;
+  }
+
+  p{margin:0 0 1.15em}
+  p:last-child{margin-bottom:0}
+
+  a{color:var(--deep);text-decoration:none;text-underline-offset:0.28em;
+    text-decoration:underline;text-decoration-thickness:1px;
+    text-decoration-color:color-mix(in srgb,var(--tide) 60%,transparent);
+    transition:text-decoration-color .25s ease,color .25s ease}
+  a:hover{color:var(--ink);text-decoration-color:var(--sand)}
+
+  :focus-visible{outline:2px solid var(--deep);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+
+  .eyebrow{
+    font-size:.72rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;
+    color:var(--deep);margin:0 0 1.4rem;display:flex;align-items:center;gap:.85rem;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;background:var(--sand);max-width:110px}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:60;
+    background:color-mix(in srgb,var(--paper) 86%,transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid color-mix(in srgb,var(--glass) 55%,transparent);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;
+    gap:1rem;min-height:60px;padding-block:.5rem}
+  .mark{font-family:var(--display);font-variation-settings:"opsz" 20,"SOFT" 60,"WONK" 1;
+    font-size:1.06rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink);white-space:nowrap}
+  .mark:hover{color:var(--deep)}
+  .topnav{display:flex;align-items:center;gap:1.6rem}
+  .topnav a{font-size:.83rem;letter-spacing:.02em;text-decoration:none;color:var(--ink);opacity:.72}
+  .topnav a:hover{opacity:1;color:var(--deep)}
+  .topnav .call{
+    border:1px solid var(--deep);border-radius:100px;padding:.42rem 1rem;
+    opacity:1;color:var(--deep);font-weight:500;
+  }
+  .topnav .call:hover{background:var(--deep);color:var(--paper)}
+  @media(max-width:720px){.topnav a:not(.call){display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:clamp(4.5rem,13vh,9rem) 0 clamp(3.5rem,8vh,6rem);overflow:hidden}
+  .drift{position:absolute;inset:-15% -10% auto;height:130%;pointer-events:none;z-index:0}
+  .orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;mix-blend-mode:multiply}
+  .orb.a{width:44vw;height:44vw;background:var(--glass);left:52%;top:-12%;animation:drift1 26s ease-in-out infinite alternate}
+  .orb.b{width:38vw;height:38vw;background:var(--tide);left:70%;top:34%;opacity:.34;animation:drift2 32s ease-in-out infinite alternate}
+  .orb.c{width:34vw;height:34vw;background:var(--sand);left:-8%;top:46%;opacity:.42;animation:drift3 38s ease-in-out infinite alternate}
+  @keyframes drift1{to{transform:translate3d(-6%,5%,0) scale(1.08)}}
+  @keyframes drift2{to{transform:translate3d(-9%,-7%,0) scale(1.12)}}
+  @keyframes drift3{to{transform:translate3d(7%,-5%,0) scale(1.06)}}
+
+  .hero .wrap{position:relative;z-index:1}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,340px);
+    gap:clamp(2rem,6vw,4.5rem);align-items:center}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:2.4rem}}
+  .hero-photo{justify-self:end;width:100%;max-width:340px}
+  @media(max-width:860px){.hero-photo{justify-self:start;max-width:260px}}
+  .hero-photo img{width:100%;display:block;aspect-ratio:662/900;object-fit:cover;
+    border-radius:14px;border:1px solid color-mix(in srgb,var(--glass) 70%,transparent);
+    box-shadow:0 30px 60px -24px color-mix(in srgb,var(--ink) 40%,transparent)}
+  .hero-place{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--deep);font-weight:600;margin:0 0 1.6rem}
+  h1{font-size:clamp(3.4rem,11.5vw,7.4rem);font-variation-settings:"opsz" 144,"SOFT" 70,"WONK" 1;
+    font-weight:250;letter-spacing:-.035em}
+  h1 .md{font-size:.36em;font-weight:400;letter-spacing:.02em;font-variation-settings:"opsz" 40,"SOFT" 60,"WONK" 0;
+    display:inline-block;transform:translateY(-.9em);margin-left:.35em;color:var(--deep)}
+  .hero-role{font-family:var(--display);font-variation-settings:"opsz" 40,"SOFT" 60,"WONK" 1;
+    font-style:italic;font-weight:300;font-size:clamp(1.25rem,3.2vw,1.85rem);
+    line-height:1.3;margin:.9rem 0 1.9rem;color:var(--deep)}
+  .hero-lede{max-width:46ch;font-size:clamp(1.05rem,1rem + .35vw,1.22rem);opacity:.86}
+
+  .creds{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.6rem;max-width:56ch}
+  .cred{
+    font-size:.76rem;letter-spacing:.03em;padding:.44rem .95rem;border-radius:100px;
+    background:color-mix(in srgb,var(--mist) 70%,transparent);
+    border:1px solid color-mix(in srgb,var(--glass) 70%,transparent);
+    color:var(--ink);
+  }
+
+  /* ---------- section shell ---------- */
+  .band{padding:clamp(4rem,10vh,7.5rem) 0}
+  .band--mist{background:var(--mist)}
+  .band--deep{background:var(--ink);color:var(--paper)}
+  .band--deep .eyebrow{color:var(--glass)}
+  .band--deep .eyebrow::after{background:color-mix(in srgb,var(--glass) 45%,transparent)}
+  .band--deep a{color:var(--glass);text-decoration-color:color-mix(in srgb,var(--glass) 45%,transparent)}
+  .band--deep a:hover{color:#fff;text-decoration-color:var(--sand)}
+
+  h2{font-size:clamp(2rem,4.6vw,3.05rem);max-width:18ch}
+  h2 em{font-style:italic;font-variation-settings:"opsz" 90,"SOFT" 90,"WONK" 1;color:var(--deep)}
+  .band--deep h2 em{color:var(--glass)}
+  .lede{max-width:58ch;margin-top:1.5rem;font-size:1.06em;opacity:.85}
+
+  .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(2rem,6vw,5rem);align-items:start}
+  @media(max-width:860px){.split{grid-template-columns:1fr;gap:2.4rem}}
+
+  /* ---------- venn ---------- */
+  .venn-stage{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);
+    gap:clamp(2rem,5vw,4.5rem);align-items:center;margin-top:3.2rem}
+  @media(max-width:860px){.venn-stage{grid-template-columns:1fr;gap:2.2rem}}
+
+  .venn{position:relative;width:100%;max-width:420px;aspect-ratio:1/1;margin-inline:auto;isolation:isolate}
+  .lens{
+    position:absolute;width:62%;aspect-ratio:1/1;border-radius:50%;
+    mix-blend-mode:multiply;border:0;padding:0;cursor:pointer;
+    font:inherit;color:var(--ink);
+    transition:transform .5s cubic-bezier(.22,.8,.3,1),opacity .4s ease;
+  }
+  .lens span{
+    position:absolute;left:0;right:0;font-size:.74rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink);opacity:.62;
+    transition:opacity .3s ease;
+  }
+  .lens[data-lens="bio"]{left:19%;top:0;background:color-mix(in srgb,var(--glass) 88%,white)}
+  .lens[data-lens="psy"]{left:0;top:33%;background:color-mix(in srgb,var(--tide) 72%,white)}
+  .lens[data-lens="soc"]{left:38%;top:33%;background:color-mix(in srgb,var(--sand) 88%,white)}
+  .lens[data-lens="bio"] span{top:13%}
+  .lens[data-lens="psy"] span{bottom:15%}
+  .lens[data-lens="soc"] span{bottom:15%}
+  .lens:hover,.lens:focus-visible,.lens.active{transform:scale(1.045)}
+  .lens.dim{opacity:.42}
+  .lens.active span{opacity:1}
+  .venn-core{
+    position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
+    width:22%;text-align:center;font-size:.66rem;letter-spacing:.12em;
+    text-transform:uppercase;line-height:1.35;color:var(--ink);opacity:.55;
+    pointer-events:none;z-index:3;
+  }
+
+  .lens-copy{min-height:11rem}
+  .lens-copy h3{font-size:clamp(1.35rem,2.6vw,1.8rem);font-variation-settings:"opsz" 60,"SOFT" 70,"WONK" 1}
+  .lens-copy p{margin-top:.9rem;max-width:42ch;opacity:.86}
+  .lens-hint{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--deep);opacity:.7;margin-top:1.6rem}
+
+  /* ---------- lists ---------- */
+  .tag-list{display:flex;flex-wrap:wrap;gap:.55rem;margin:0;padding:0;list-style:none}
+  .tag-list li{
+    padding:.55rem 1.05rem;border-radius:100px;font-size:.9rem;
+    background:var(--paper);border:1px solid color-mix(in srgb,var(--glass) 80%,transparent);
+  }
+  .band--mist .tag-list li{background:var(--paper)}
+
+  .rule-list{list-style:none;margin:0;padding:0}
+  .rule-list li{
+    padding:.95rem 0;border-top:1px solid color-mix(in srgb,var(--glass) 65%,transparent);
+    display:flex;gap:1rem;align-items:baseline;
+  }
+  .rule-list li:last-child{border-bottom:1px solid color-mix(in srgb,var(--glass) 65%,transparent)}
+  .rule-list .k{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--deep);flex:0 0 6.2rem;opacity:.8}
+  @media(max-width:520px){.rule-list li{flex-direction:column;gap:.25rem}.rule-list .k{flex:none}}
+
+  /* ---------- timeline ---------- */
+  .path{list-style:none;margin:3rem 0 0;padding:0 0 0 2rem;position:relative}
+  .path::before{content:"";position:absolute;left:0;top:.7rem;bottom:.7rem;width:1px;
+    background:linear-gradient(var(--tide),color-mix(in srgb,var(--tide) 15%,transparent))}
+  .path li{position:relative;padding:0 0 2.4rem}
+  .path li:last-child{padding-bottom:0}
+  .path li::before{content:"";position:absolute;left:calc(-2rem - 4px);top:.62rem;
+    width:9px;height:9px;border-radius:50%;background:var(--paper);border:1.5px solid var(--tide)}
+  .path li:last-child::before{background:var(--deep);border-color:var(--deep)}
+  .path .where{font-family:var(--display);font-variation-settings:"opsz" 40,"SOFT" 70,"WONK" 1;
+    font-size:clamp(1.2rem,2.4vw,1.5rem);font-weight:350;letter-spacing:-.015em;display:block}
+  .path .what{font-size:.83rem;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--deep);margin-top:.4rem;display:block;opacity:.85}
+
+  /* ---------- work cards ---------- */
+  .work{display:grid;gap:1px;margin-top:3rem;
+    background:color-mix(in srgb,var(--glass) 40%,transparent);
+    border-block:1px solid color-mix(in srgb,var(--glass) 40%,transparent)}
+  .work-item{background:var(--ink);padding:2rem clamp(1rem,3vw,2.2rem)}
+  .work-kind{font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;color:var(--glass);opacity:.85}
+  .work-title{font-family:var(--display);font-variation-settings:"opsz" 50,"SOFT" 70,"WONK" 1;
+    font-weight:300;font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.28;margin:.7rem 0 .55rem;
+    letter-spacing:-.012em}
+  .work-meta{font-size:.87rem;opacity:.62;margin:0}
+  @media(min-width:780px){.work{grid-template-columns:repeat(3,1fr)}}
+
+  /* ---------- language ---------- */
+  .lang-mark{font-family:var(--display);font-size:clamp(3.6rem,11vw,6.4rem);
+    font-weight:250;line-height:1;color:var(--deep);opacity:.9;letter-spacing:.02em}
+  .lang-sub{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--deep);margin-top:1rem;opacity:.8}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:2.4rem;margin-top:3rem}
+  .contact-grid h3{font-size:.74rem;font-family:var(--body);font-weight:600;
+    letter-spacing:.17em;text-transform:uppercase;color:var(--deep);margin-bottom:.8rem}
+  .contact-grid p{font-size:1.02rem;line-height:1.6}
+  .note{margin-top:3rem;padding:1.4rem 1.6rem;border-left:2px solid var(--sand);
+    background:color-mix(in srgb,var(--mist) 60%,transparent);max-width:60ch;font-size:.95rem;opacity:.9}
+
+  footer{padding:2.6rem 0 3.4rem;border-top:1px solid color-mix(in srgb,var(--glass) 60%,transparent);
+    font-size:.82rem;opacity:.6}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
+
+  /* ---------- reveal ---------- */
+  .rise{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.22,.8,.3,1),transform .9s cubic-bezier(.22,.8,.3,1)}
+  .rise.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+    .rise{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="#top">Carol Chen, <em>MD</em></a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#approach">Approach</a>
+      <a href="#focus">Focus</a>
+      <a href="#path">Training</a>
+      <a href="#writing">Writing</a>
+      <a class="call" href="tel:3102764003">310-276-4003</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="drift" aria-hidden="true">
+      <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+    </div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="hero-place">Beverly Hills, California</p>
+          <h1>Carol Chen<span class="md">MD</span></h1>
+          <p class="hero-role">Child, adolescent, and adult psychiatry</p>
+          <p class="hero-lede">Board-certified psychiatrist with more than eight years of clinical experience, offering comprehensive psychiatric evaluation and medication management for anxiety, OCD, ADHD, mood disorders, and trauma.</p>
+          <div class="creds">
+            <span class="cred">Board-certified in Psychiatry</span>
+            <span class="cred">Board-certified in Child &amp; Adolescent Psychiatry</span>
+            <span class="cred">American Board of Psychiatry and Neurology</span>
+            <span class="cred">English &amp; Mandarin Chinese</span>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="images/carol-chen.jpg" alt="Portrait of Dr. Carol Chen" width="662" height="900">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="band band--mist" id="approach">
+    <div class="wrap">
+      <p class="eyebrow rise">Approach</p>
+      <h2 class="rise">Three lenses on <em>the same person</em></h2>
+      <p class="lede rise">Dr. Chen practices holistically and collaboratively, reading biological, psychological, and social factors together rather than treating any one of them alone. Where the three overlap is where an individual treatment plan gets written.</p>
+
+      <div class="venn-stage rise">
+        <div class="venn" id="venn">
+          <button class="lens active" data-lens="bio" aria-describedby="lensCopy"><span>Biological</span></button>
+          <button class="lens" data-lens="psy" aria-describedby="lensCopy"><span>Psychological</span></button>
+          <button class="lens" data-lens="soc" aria-describedby="lensCopy"><span>Social</span></button>
+          <div class="venn-core">Treatment<br>plan</div>
+        </div>
+
+        <div class="lens-copy" id="lensCopy" aria-live="polite">
+          <h3 id="lensTitle">Biological</h3>
+          <p id="lensBody">Genetics, development, sleep, and how a particular body responds to a particular medication. Psychopharmacology and careful, ongoing medication management live here.</p>
+          <p class="lens-hint">Select a lens</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS -->
+  <section class="band" id="focus">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow rise">Areas of focus</p>
+        <h2 class="rise">What people come <em>in with</em></h2>
+        <p class="lede rise">Dr. Chen works with children, adolescents, and adults, and sees patients at Bowman Medical Group in Beverly Hills.</p>
+      </div>
+      <div class="rise">
+        <ul class="tag-list">
+          <li>Anxiety disorders</li>
+          <li>Obsessive-compulsive disorder</li>
+          <li>Depression</li>
+          <li>Bipolar disorder</li>
+          <li>Trauma-related conditions</li>
+          <li>ADHD</li>
+          <li>Tic disorders</li>
+          <li>Student mental health</li>
+        </ul>
+
+        <ul class="rule-list" style="margin-top:3rem">
+          <li><span class="k">Evaluation</span><span>Comprehensive psychiatric evaluation for children, adolescents, and adults</span></li>
+          <li><span class="k">Medication</span><span>Psychopharmacology and ongoing medication management</span></li>
+          <li><span class="k">Therapy</span><span>Care informed by CBT, DBT, and acceptance and commitment therapy</span></li>
+          <li><span class="k">Together</span><span>Close collaboration with psychotherapists so care stays joined up</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATH -->
+  <section class="band band--mist" id="path">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow rise">Training &amp; background</p>
+        <h2 class="rise">The route <em>here</em></h2>
+      </div>
+      <div class="rise">
+        <ul class="path">
+          <li><span class="where">Eastern Virginia Medical School</span><span class="what">Doctor of Medicine</span></li>
+          <li><span class="where">University of California, Davis</span><span class="what">Residency — General Psychiatry</span></li>
+          <li><span class="where">Harbor-UCLA</span><span class="what">Fellowship — Child &amp; Adolescent Psychiatry</span></li>
+          <li><span class="where">University of Michigan</span><span class="what">Assistant Professor — Childhood Anxiety &amp; OCD team</span></li>
+          <li><span class="where">Bowman Medical Group</span><span class="what">Practice — Beverly Hills, California</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section class="band band--deep" id="writing">
+    <div class="wrap">
+      <p class="eyebrow rise">Writing, research &amp; speaking</p>
+      <h2 class="rise">Work outside <em>the office</em></h2>
+      <div class="work rise">
+        <article class="work-item">
+          <p class="work-kind">Article</p>
+          <h3 class="work-title"><a href="https://www.sciencedirect.com/science/article/pii/S0890856725001613" target="_blank" rel="noopener">Challenges and Pearls of Evaluation and Treatment of Youth with Scrupulosity OCD</a></h3>
+          <p class="work-meta">Published research on assessing and treating scrupulosity in young people.</p>
+        </article>
+        <article class="work-item">
+          <p class="work-kind">Podcast</p>
+          <h3 class="work-title"><a href="https://pediatricmeltdown.com/144-self-injurious-behaviours-in-youth-assessment-and-management/" target="_blank" rel="noopener">Self-Injurious Behaviors: Assessment and Interventions</a></h3>
+          <p class="work-meta">Pediatric Meltdown, with L. Gaggino — March 2023, Ann Arbor, MI.</p>
+        </article>
+        <article class="work-item">
+          <p class="work-kind">Grand Rounds</p>
+          <h3 class="work-title">Best practices in youth mental health care</h3>
+          <p class="work-meta">Guest speaker, Pediatric Department, Trinity Health Center.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGE -->
+  <section class="band">
+    <div class="wrap split">
+      <div class="rise">
+        <p class="lang-mark" lang="zh-Hans">中文</p>
+        <p class="lang-sub">Consultations in Mandarin Chinese</p>
+      </div>
+      <div>
+        <p class="eyebrow rise">Language &amp; culture</p>
+        <h2 class="rise">Care that travels <em>with a family</em></h2>
+        <p class="lede rise">Fluent in Mandarin Chinese, Dr. Chen works closely with individuals from multicultural backgrounds — on acculturation, intergenerational strain, and the psychological weight immigration places on a family. Care is shaped around what each person actually brings into the room.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="band band--mist" id="contact">
+    <div class="wrap">
+      <p class="eyebrow rise">Get in touch</p>
+      <h2 class="rise">New and returning patients <em>welcome</em></h2>
+
+      <div class="contact-grid rise">
+        <div>
+          <h3>Practice</h3>
+          <p>Bowman Medical Group<br>9777 Wilshire Blvd, Suite 707<br>Beverly Hills, CA 90212</p>
+        </div>
+        <div>
+          <h3>Appointments</h3>
+          <p><a href="tel:3102764003">310-276-4003</a></p>
+        </div>
+        <div>
+          <h3>General inquiries</h3>
+          <p><a href="tel:3102764003">310-276-4003</a></p>
+        </div>
+        <div>
+          <h3>Profile</h3>
+          <p><a href="https://www.bowmanmedicalgroup.com/provider/carol-chen-md" target="_blank" rel="noopener">bowmanmedicalgroup.com</a></p>
+        </div>
+      </div>
+
+      <p class="note rise"><strong>On insurance.</strong> Some providers at the practice accept insurance, and some aspects of the practice are cash based. Call the office with questions about your coverage and they'll walk you through it.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Carol Chen, MD — Psychiatry, Beverly Hills</span>
+    <span>Information drawn from her Bowman Medical Group profile.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var copy = {
+    bio:{t:"Biological",b:"Genetics, development, sleep, and how a particular body responds to a particular medication. Psychopharmacology and careful, ongoing medication management live here."},
+    psy:{t:"Psychological",b:"Thought patterns, coping, and skills. The work is informed by cognitive behavioral therapy, dialectical behavior therapy, and acceptance and commitment therapy, in close collaboration with psychotherapists."},
+    soc:{t:"Social",b:"Family, school, culture, and community — the world a person walks back into after the appointment ends, and often the one that decides whether a plan holds."}
+  };
+  var venn = document.getElementById('venn');
+  if(venn){
+    var lenses = venn.querySelectorAll('.lens');
+    var title = document.getElementById('lensTitle');
+    var bodyEl = document.getElementById('lensBody');
+
+    function show(key){
+      lenses.forEach(function(l){
+        var on = l.dataset.lens === key;
+        l.classList.toggle('active', on);
+        l.classList.toggle('dim', !on);
+      });
+      title.textContent = copy[key].t;
+      bodyEl.textContent = copy[key].b;
+    }
+    lenses.forEach(function(l){
+      l.addEventListener('mouseenter', function(){ show(l.dataset.lens); });
+      l.addEventListener('focus', function(){ show(l.dataset.lens); });
+      l.addEventListener('click', function(){ show(l.dataset.lens); });
+    });
+    venn.addEventListener('mouseleave', function(){
+      lenses.forEach(function(l){ l.classList.remove('dim'); });
+    });
+    show('bio');
+    lenses.forEach(function(l){ l.classList.remove('dim'); });
+  }
+
+  var items = document.querySelectorAll('.rise');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(n){ n.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var i = Array.prototype.indexOf.call(e.target.parentNode.children, e.target);
+        e.target.style.transitionDelay = Math.min(i,4)*70 + 'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  items.forEach(function(n){ io.observe(n); });
+})();
+</script>
+</body>
+</html>
