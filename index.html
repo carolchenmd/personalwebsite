@@ -93,6 +93,7 @@
 
   /* ---------- hero ---------- */
   .hero{position:relative;padding:clamp(4.5rem,13vh,9rem) 0 clamp(3.5rem,8vh,6rem);overflow:hidden}
+  @media(max-width:860px){.hero{padding:2.2rem 0 2.6rem}}
   .drift{position:absolute;inset:-15% -10% auto;height:130%;pointer-events:none;z-index:0}
   .orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;mix-blend-mode:multiply}
   .orb.a{width:44vw;height:44vw;background:var(--glass);left:52%;top:-12%;animation:drift1 26s ease-in-out infinite alternate}
@@ -294,7 +295,7 @@
           <p class="hero-place">Beverly Hills, California</p>
           <h1>Carol Chen<span class="md">MD</span></h1>
           <p class="hero-role">Child, adolescent, and adult psychiatry</p>
-          <p class="hero-lede">Board-certified psychiatrist with more than eight years of clinical experience, offering comprehensive psychiatric evaluation and medication management for anxiety, OCD, ADHD, mood disorders, and trauma.</p>
+          <p class="hero-lede">Board-certified psychiatrist with more than 10 years of clinical experience, offering comprehensive psychiatric evaluation and medication management for anxiety, OCD, ADHD, mood disorders, and trauma.</p>
           <div class="creds">
             <span class="cred">Board-certified in Psychiatry</span>
             <span class="cred">Board-certified in Child &amp; Adolescent Psychiatry</span>
@@ -457,7 +458,6 @@
 <footer>
   <div class="wrap">
     <span>Carol Chen, MD — Psychiatry, Beverly Hills</span>
-    <span>Information drawn from her Bowman Medical Group profile.</span>
   </div>
 </footer>
 
