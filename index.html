@@ -64,10 +64,13 @@
   .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
 
   .eyebrow{
-    font-size:.72rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;
-    color:var(--deep);margin:0 0 1.4rem;display:flex;align-items:center;gap:.85rem;
+    position:relative;font-family:var(--body);padding-top:1.15rem;
+    font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.015em;
+    line-height:1.04;text-transform:uppercase;color:var(--ink);margin:0;
   }
-  .eyebrow::after{content:"";height:1px;flex:1;background:var(--sand);max-width:110px}
+  .eyebrow::before{content:"";position:absolute;top:0;left:0;width:2.75rem;height:4px;
+    border-radius:2px;background:var(--deep)}
+  .band--deep .eyebrow::before{background:var(--glass)}
 
   /* ---------- top bar ---------- */
   .topbar{
@@ -149,13 +152,9 @@
   .band--mist{background:var(--mist)}
   .band--deep{background:var(--ink);color:var(--paper)}
   .band--deep .eyebrow{color:var(--glass)}
-  .band--deep .eyebrow::after{background:color-mix(in srgb,var(--glass) 45%,transparent)}
   .band--deep a{color:var(--glass);text-decoration-color:color-mix(in srgb,var(--glass) 45%,transparent)}
   .band--deep a:hover{color:#fff;text-decoration-color:var(--sand)}
 
-  h2{font-size:clamp(2rem,4.6vw,3.05rem);max-width:18ch}
-  h2 em{font-style:italic;font-variation-settings:"opsz" 90,"SOFT" 90,"WONK" 1;color:var(--deep)}
-  .band--deep h2 em{color:var(--glass)}
   .lede{max-width:58ch;margin-top:1.5rem;font-size:1.06em;opacity:.85}
 
   .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(2rem,6vw,5rem);align-items:start}
@@ -326,7 +325,6 @@
   <section class="band band--mist" id="approach">
     <div class="wrap">
       <p class="eyebrow rise" data-i18n="eyebrow-approach">Evaluation Approach</p>
-      <h2 class="rise" data-i18n="h2-approach">Three lenses on <em>the same person</em></h2>
       <p class="lede rise" data-i18n="lede-approach">Dr. Chen practices holistically and collaboratively, reading biological, psychological, and social factors together rather than treating any one of them alone. Each lens feeds into a single individual treatment plan.</p>
 
       <div class="venn-stage rise">
@@ -358,7 +356,6 @@
     <div class="wrap split">
       <div>
         <p class="eyebrow rise" data-i18n="eyebrow-focus">Areas of focus</p>
-        <h2 class="rise" data-i18n="h2-focus">What people come <em>in with</em></h2>
         <p class="lede rise" data-i18n="lede-focus">Dr. Chen works with children, adolescents, and adults, seeing patients both in-person at Bowman Medical Group in Beverly Hills and via telehealth throughout California.</p>
       </div>
       <div class="rise">
@@ -388,7 +385,6 @@
     <div class="wrap split">
       <div>
         <p class="eyebrow rise" data-i18n="eyebrow-path">Training &amp; background</p>
-        <h2 class="rise" data-i18n="h2-path">The route <em>here</em></h2>
       </div>
       <div class="rise">
         <ul class="path">
@@ -407,7 +403,6 @@
   <section class="band band--deep" id="writing">
     <div class="wrap">
       <p class="eyebrow rise" data-i18n="eyebrow-writing">Writing, research &amp; speaking</p>
-      <h2 class="rise" data-i18n="h2-writing">Work outside <em>the office</em></h2>
       <div class="work rise">
         <article class="work-item">
           <p class="work-kind" data-i18n="work-kind-1">Article</p>
@@ -437,7 +432,6 @@
       </div>
       <div>
         <p class="eyebrow rise" data-i18n="eyebrow-lang">Language &amp; culture</p>
-        <h2 class="rise" data-i18n="h2-lang">Multicultural <em>backgrounds</em></h2>
         <p class="lede rise" data-i18n="lede-lang">Raised between Taiwan, New Zealand, and the U.S., and fluent in Mandarin Chinese, Dr. Chen works closely with individuals from multicultural backgrounds — on acculturation, intergenerational strain, and the psychological weight immigration places on a family. Care is shaped around what each person actually brings into the room.</p>
       </div>
     </div>
@@ -447,7 +441,6 @@
   <section class="band band--mist" id="contact">
     <div class="wrap">
       <p class="eyebrow rise" data-i18n="eyebrow-contact">Get in touch</p>
-      <h2 class="rise" data-i18n="h2-contact">New and returning patients <em>welcome</em></h2>
       <p class="lede rise" data-i18n="lede-contact">Appointments are available both in-person at Bowman Medical Group in Beverly Hills and via telehealth throughout California.</p>
 
       <div class="contact-grid rise">
@@ -477,7 +470,6 @@
   <section class="band" id="access">
     <div class="wrap">
       <p class="eyebrow rise" data-i18n="eyebrow-access">Community access</p>
-      <h2 class="rise" data-i18n="h2-access">Care that reaches <em>further</em></h2>
       <p class="lede rise" data-i18n="lede-access">Beyond her practice at Bowman Medical Group, Dr. Chen also provides psychiatric care at Medi-Cal contracted clinics, extending evaluation and treatment to underserved, lower-income communities across Los Angeles County.</p>
     </div>
   </section>
@@ -512,10 +504,10 @@
       "hero-lede":"Board-certified psychiatrist with more than 10 years of clinical experience, offering comprehensive psychiatric evaluation and medication management for anxiety, OCD, ADHD, mood disorders, and trauma.",
       "cred-1":"Board-certified in Psychiatry","cred-2":"Board-certified in Child &amp; Adolescent Psychiatry",
       "cred-4":"English &amp; Mandarin Chinese",
-      "eyebrow-approach":"Evaluation Approach","h2-approach":"Three lenses on <em>the same person</em>",
+      "eyebrow-approach":"Evaluation Approach",
       "lede-approach":"Dr. Chen practices holistically and collaboratively, reading biological, psychological, and social factors together rather than treating any one of them alone. Each lens feeds into a single individual treatment plan.",
       "lens-bio":"Biological","lens-psy":"Psychological","lens-soc":"Social","flow-plan":"Treatment plan","lens-hint":"Select a lens",
-      "eyebrow-focus":"Areas of focus","h2-focus":"What people come <em>in with</em>",
+      "eyebrow-focus":"Areas of focus",
       "lede-focus":"Dr. Chen works with children, adolescents, and adults, seeing patients both in-person at Bowman Medical Group in Beverly Hills and via telehealth throughout California.",
       "tag-1":"Anxiety disorders","tag-2":"Obsessive-compulsive disorder","tag-3":"Depression","tag-4":"Bipolar disorder",
       "tag-5":"Trauma-related conditions","tag-6":"ADHD","tag-7":"Tic disorders","tag-8":"Student mental health",
@@ -523,22 +515,22 @@
       "rule-k-2":"Medication","rule-v-2":"Advanced psychopharmacology and ongoing medication management",
       "rule-k-3":"Therapy","rule-v-3":"Medication appointments are informed by psychodynamic, CBT, ERP, DBT, and ACT lenses",
       "rule-k-4":"Together","rule-v-4":"Close collaboration with therapists, psychologists, educators, primary care doctors, and other medical specialists so care stays joined up",
-      "eyebrow-path":"Training &amp; background","h2-path":"The route <em>here</em>",
+      "eyebrow-path":"Training &amp; background",
       "path-what-1":"Bachelor of Science","path-what-2":"Doctor of Medicine","path-what-3":"Residency — General Psychiatry",
       "path-what-4":"Fellowship — Child &amp; Adolescent Psychiatry","path-what-5":"Assistant Professor — Childhood Anxiety &amp; OCD team, Student Mental Health",
       "path-what-6":"Practice — Beverly Hills, California",
-      "eyebrow-writing":"Writing, research &amp; speaking","h2-writing":"Work outside <em>the office</em>",
+      "eyebrow-writing":"Writing, research &amp; speaking",
       "work-kind-1":"Article","work-meta-1":"Published research on assessing and treating scrupulosity in young people.",
       "work-kind-2":"Podcast","work-meta-2":"Pediatric Meltdown, with L. Gaggino — March 2023, Ann Arbor, MI.",
       "work-kind-3":"Grand Rounds","work-meta-3":"Guest speaker, Pediatric Department, Trinity Health Center.",
       "lang-sub":"Consultations in English and Mandarin Chinese",
-      "eyebrow-lang":"Language &amp; culture","h2-lang":"Multicultural <em>backgrounds</em>",
+      "eyebrow-lang":"Language &amp; culture",
       "lede-lang":"Raised between Taiwan, New Zealand, and the U.S., and fluent in Mandarin Chinese, Dr. Chen works closely with individuals from multicultural backgrounds — on acculturation, intergenerational strain, and the psychological weight immigration places on a family. Care is shaped around what each person actually brings into the room.",
-      "eyebrow-contact":"Get in touch","h2-contact":"New and returning patients <em>welcome</em>",
+      "eyebrow-contact":"Get in touch",
       "lede-contact":"Appointments are available both in-person at Bowman Medical Group in Beverly Hills and via telehealth throughout California.",
       "contact-h-1":"Practice","contact-h-2":"Appointments","contact-h-3":"General inquiries","contact-h-4":"Profile",
       "note-insurance":"<strong>On insurance.</strong> Dr. Chen is in network with Aetna and provides a superbill for other out-of-network insurances. Call the office with questions about your coverage and they will walk you through it.",
-      "eyebrow-access":"Community access","h2-access":"Care that reaches <em>further</em>",
+      "eyebrow-access":"Community access",
       "lede-access":"Beyond her practice at Bowman Medical Group, Dr. Chen also provides psychiatric care at Medi-Cal contracted clinics, extending evaluation and treatment to underserved, lower-income communities across Los Angeles County.",
       "footer-text":"Carol Chen, MD — Psychiatry, Beverly Hills"
     },
@@ -549,10 +541,10 @@
       "hero-lede":"美國精神科委員會認證醫師，擁有超過10年臨床經驗，為焦慮症、強迫症、注意力不足過動症（ADHD）、情緒障礙及創傷相關疾患提供全面的精神科評估與藥物治療管理。",
       "cred-1":"美國精神科委員會認證","cred-2":"美國兒童與青少年精神科委員會認證",
       "cred-4":"英語與中文",
-      "eyebrow-approach":"評估方法","h2-approach":"看見<em>同一個人</em>的三重視角",
+      "eyebrow-approach":"評估方法",
       "lede-approach":"陳醫師採用整體、協作的診療方式，將生理、心理與社會因素一併納入考量，而非孤立地處理其中任何一項。每一個視角都匯入同一份個人化的治療方案。",
       "lens-bio":"生理","lens-psy":"心理","lens-soc":"社會","flow-plan":"治療方案","lens-hint":"選擇一個視角",
-      "eyebrow-focus":"專長領域","h2-focus":"患者<em>因何而來</em>",
+      "eyebrow-focus":"專長領域",
       "lede-focus":"陳醫師為兒童、青少年及成人提供診療服務，可親自前往比佛利山莊的鮑曼醫療集團（Bowman Medical Group）看診，也可透過遠距醫療於加州境內看診。",
       "tag-1":"焦慮症","tag-2":"強迫症","tag-3":"憂鬱症","tag-4":"雙相情緒障礙症",
       "tag-5":"創傷相關疾患","tag-6":"注意力不足過動症（ADHD）","tag-7":"抽動症","tag-8":"學生心理健康",
@@ -560,22 +552,22 @@
       "rule-k-2":"藥物治療","rule-v-2":"先進的精神藥理學與持續的藥物管理",
       "rule-k-3":"療法","rule-v-3":"複診評估融合精神動力學、認知行為治療（CBT）、暴露與反應預防治療（ERP）、辯證行為治療（DBT）與接納承諾治療（ACT）等多重視角",
       "rule-k-4":"協作","rule-v-4":"與心理治療師、心理學家、教育工作者、基層醫療醫師及其他專科醫師密切協作，確保治療環環相扣",
-      "eyebrow-path":"培訓與背景","h2-path":"成為醫師的<em>歷程</em>",
+      "eyebrow-path":"培訓與背景",
       "path-what-1":"理學學士","path-what-2":"醫學博士","path-what-3":"住院醫師訓練 — 一般精神科",
       "path-what-4":"專科訓練 — 兒童與青少年精神科","path-what-5":"助理教授 — 兒童焦慮與強迫症團隊、學生心理健康",
       "path-what-6":"執業 — 加利福尼亞州比佛利山莊",
-      "eyebrow-writing":"著作、研究與演講","h2-writing":"診間<em>之外</em>的工作",
+      "eyebrow-writing":"著作、研究與演講",
       "work-kind-1":"文章","work-meta-1":"已發表研究，探討青少年心理宗教強迫症（scrupulosity）的評估與治療。",
       "work-kind-2":"播客","work-meta-2":"《Pediatric Meltdown》播客，與 L. Gaggino 合作 — 2023年3月，密西根州安娜堡。",
       "work-kind-3":"教學查房","work-meta-3":"特邀演講嘉賓，Trinity Health Center 兒科部門。",
       "lang-sub":"提供英語與中文問診",
-      "eyebrow-lang":"語言與文化","h2-lang":"<em>多元文化</em>背景",
+      "eyebrow-lang":"語言與文化",
       "lede-lang":"陳醫師成長於台灣、紐西蘭與美國之間，精通中文，長期與來自多元文化背景的個案密切合作——涉及文化適應、代間張力，以及移民為家庭帶來的心理壓力。診療方案會根據每位患者實際帶入診間的獨特背景來量身規劃。",
-      "eyebrow-contact":"聯絡我們","h2-contact":"<em>歡迎</em>新舊患者",
+      "eyebrow-contact":"聯絡我們",
       "lede-contact":"門診提供親自前往比佛利山莊鮑曼醫療集團（Bowman Medical Group）看診，或透過遠距醫療於加州境內看診。",
       "contact-h-1":"診所","contact-h-2":"預約","contact-h-3":"一般諮詢","contact-h-4":"醫師簡介",
       "note-insurance":"<strong>關於保險。</strong>陳醫師為 Aetna 保險的特約醫師，其他非特約保險可提供 superbill（自費收據）以便向保險公司申請理賠。如對保險範圍有疑問，請致電診所，工作人員將為您詳細說明。",
-      "eyebrow-access":"社區服務","h2-access":"讓關懷<em>觸及更遠</em>",
+      "eyebrow-access":"社區服務",
       "lede-access":"除了在比佛利山莊鮑曼醫療集團（Bowman Medical Group）的診療工作外，陳醫師也在 Medi-Cal 特約診所提供精神科服務，將評估與治療延伸至洛杉磯郡內服務不足的低收入社區。",
       "footer-text":"Carol Chen, MD — 精神科，比佛利山莊"
     }
