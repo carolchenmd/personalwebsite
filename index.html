@@ -90,6 +90,13 @@
   }
   .topnav .call:hover{background:var(--deep);color:var(--paper)}
   @media(max-width:720px){.topnav a:not(.call){display:none}}
+  .lang-toggle{
+    font:inherit;font-size:.83rem;letter-spacing:.02em;cursor:pointer;
+    border:1px solid color-mix(in srgb,var(--glass) 80%,transparent);
+    background:transparent;color:var(--ink);border-radius:100px;
+    padding:.38rem .9rem;opacity:.85;transition:opacity .2s ease,border-color .2s ease,color .2s ease;
+  }
+  .lang-toggle:hover{opacity:1;color:var(--deep);border-color:var(--deep)}
 
   /* ---------- hero ---------- */
   .hero{position:relative;padding:clamp(4.5rem,13vh,9rem) 0 clamp(3.5rem,8vh,6rem);overflow:hidden}
@@ -159,32 +166,31 @@
     gap:clamp(2rem,5vw,4.5rem);align-items:center;margin-top:3.2rem}
   @media(max-width:860px){.venn-stage{grid-template-columns:1fr;gap:2.2rem}}
 
-  .venn{position:relative;width:100%;max-width:420px;aspect-ratio:1/1;margin-inline:auto;isolation:isolate}
+  .flow{position:relative;width:100%;max-width:420px;margin-inline:auto}
+  .flow-nodes{display:flex;gap:.6rem}
   .lens{
-    position:absolute;width:62%;aspect-ratio:1/1;border-radius:50%;
-    mix-blend-mode:multiply;border:0;padding:0;cursor:pointer;
-    font:inherit;color:var(--ink);
-    transition:transform .5s cubic-bezier(.22,.8,.3,1),opacity .4s ease;
+    flex:1;min-width:0;padding:1.15rem .5rem;border-radius:14px;
+    border:0;cursor:pointer;font:inherit;color:var(--ink);text-align:center;
+    transition:transform .4s cubic-bezier(.22,.8,.3,1),opacity .3s ease;
   }
   .lens span{
-    position:absolute;left:0;right:0;font-size:.74rem;font-weight:600;
-    letter-spacing:.16em;text-transform:uppercase;color:var(--ink);opacity:.62;
-    transition:opacity .3s ease;
+    font-size:.72rem;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;opacity:.7;transition:opacity .3s ease;
   }
-  .lens[data-lens="bio"]{left:19%;top:0;background:color-mix(in srgb,var(--glass) 88%,white)}
-  .lens[data-lens="psy"]{left:0;top:33%;background:color-mix(in srgb,var(--tide) 72%,white)}
-  .lens[data-lens="soc"]{left:38%;top:33%;background:color-mix(in srgb,var(--sand) 88%,white)}
-  .lens[data-lens="bio"] span{top:13%}
-  .lens[data-lens="psy"] span{bottom:15%}
-  .lens[data-lens="soc"] span{bottom:15%}
-  .lens:hover,.lens:focus-visible,.lens.active{transform:scale(1.045)}
-  .lens.dim{opacity:.42}
+  .lens[data-lens="bio"]{background:color-mix(in srgb,var(--glass) 88%,white)}
+  .lens[data-lens="psy"]{background:color-mix(in srgb,var(--tide) 72%,white)}
+  .lens[data-lens="soc"]{background:color-mix(in srgb,var(--sand) 88%,white)}
+  .lens:hover,.lens:focus-visible,.lens.active{transform:translateY(-3px)}
+  .lens.dim{opacity:.5}
   .lens.active span{opacity:1}
-  .venn-core{
-    position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
-    width:22%;text-align:center;font-size:.66rem;letter-spacing:.12em;
-    text-transform:uppercase;line-height:1.35;color:var(--ink);opacity:.55;
-    pointer-events:none;z-index:3;
+  .flow-lines{display:block;width:100%;height:44px}
+  .flow-line{stroke:var(--deep);stroke-width:2;opacity:.3;transition:opacity .3s ease,stroke-width .3s ease}
+  .flow-line.active{opacity:.9;stroke-width:2.5}
+  .flow-line.dim{opacity:.15}
+  .flow-plan{
+    padding:1.05rem 1rem;border-radius:14px;background:var(--deep);color:var(--paper);
+    text-align:center;font-size:.72rem;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;
   }
 
   .lens-copy{min-height:11rem}
@@ -238,8 +244,11 @@
   @media(min-width:780px){.work{grid-template-columns:repeat(3,1fr)}}
 
   /* ---------- language ---------- */
-  .lang-mark{font-family:var(--display);font-size:clamp(3.6rem,11vw,6.4rem);
-    font-weight:250;line-height:1;color:var(--deep);opacity:.9;letter-spacing:.02em}
+  .lang-mark{font-family:var(--display);font-size:clamp(2.8rem,8vw,4.8rem);
+    font-weight:250;line-height:1;color:var(--deep);opacity:.9;letter-spacing:.02em;
+    display:flex;align-items:baseline;gap:.5rem}
+  .lang-mark .en{font-family:var(--display);letter-spacing:.02em;opacity:.9}
+  .lang-mark .slash{opacity:.35;font-weight:250}
   .lang-sub{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
     color:var(--deep);margin-top:1rem;opacity:.8}
 
@@ -273,11 +282,13 @@
   <div class="wrap">
     <a class="mark" href="#top">Carol Chen, <em>MD</em></a>
     <nav class="topnav" aria-label="Sections">
-      <a href="#approach">Approach</a>
-      <a href="#focus">Focus</a>
-      <a href="#path">Training</a>
-      <a href="#writing">Writing</a>
+      <a href="#approach" data-i18n="nav-approach">Evaluation Approach</a>
+      <a href="#focus" data-i18n="nav-focus">Focus</a>
+      <a href="#path" data-i18n="nav-path">Training</a>
+      <a href="#writing" data-i18n="nav-writing">Writing</a>
+      <a href="#access" data-i18n="nav-access">Access</a>
       <a class="call" href="tel:3102764003">310-276-4003</a>
+      <button class="lang-toggle" id="langToggle" type="button">中文</button>
     </nav>
   </div>
 </header>
@@ -292,15 +303,14 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-text">
-          <p class="hero-place">Beverly Hills, California</p>
+          <p class="hero-place" data-i18n="hero-place">Beverly Hills, California</p>
           <h1>Carol Chen<span class="md">MD</span></h1>
-          <p class="hero-role">Child, adolescent, and adult psychiatry</p>
-          <p class="hero-lede">Board-certified psychiatrist with more than 10 years of clinical experience, offering comprehensive psychiatric evaluation and medication management for anxiety, OCD, ADHD, mood disorders, and trauma.</p>
+          <p class="hero-role" data-i18n="hero-role">Child, adolescent, and adult psychiatry</p>
+          <p class="hero-lede" data-i18n="hero-lede">Board-certified psychiatrist with more than 10 years of clinical experience, offering comprehensive psychiatric evaluation and medication management for anxiety, OCD, ADHD, mood disorders, and trauma.</p>
           <div class="creds">
-            <span class="cred">Board-certified in Psychiatry</span>
-            <span class="cred">Board-certified in Child &amp; Adolescent Psychiatry</span>
-            <span class="cred">American Board of Psychiatry and Neurology</span>
-            <span class="cred">English &amp; Mandarin Chinese</span>
+            <span class="cred" data-i18n="cred-1">Board-certified in Psychiatry</span>
+            <span class="cred" data-i18n="cred-2">Board-certified in Child &amp; Adolescent Psychiatry</span>
+            <span class="cred" data-i18n="cred-4">English &amp; Mandarin Chinese</span>
           </div>
         </div>
         <div class="hero-photo">
@@ -315,22 +325,29 @@
   <!-- APPROACH -->
   <section class="band band--mist" id="approach">
     <div class="wrap">
-      <p class="eyebrow rise">Approach</p>
-      <h2 class="rise">Three lenses on <em>the same person</em></h2>
-      <p class="lede rise">Dr. Chen practices holistically and collaboratively, reading biological, psychological, and social factors together rather than treating any one of them alone. Where the three overlap is where an individual treatment plan gets written.</p>
+      <p class="eyebrow rise" data-i18n="eyebrow-approach">Evaluation Approach</p>
+      <h2 class="rise" data-i18n="h2-approach">Three lenses on <em>the same person</em></h2>
+      <p class="lede rise" data-i18n="lede-approach">Dr. Chen practices holistically and collaboratively, reading biological, psychological, and social factors together rather than treating any one of them alone. Each lens feeds into a single individual treatment plan.</p>
 
       <div class="venn-stage rise">
-        <div class="venn" id="venn">
-          <button class="lens active" data-lens="bio" aria-describedby="lensCopy"><span>Biological</span></button>
-          <button class="lens" data-lens="psy" aria-describedby="lensCopy"><span>Psychological</span></button>
-          <button class="lens" data-lens="soc" aria-describedby="lensCopy"><span>Social</span></button>
-          <div class="venn-core">Treatment<br>plan</div>
+        <div class="flow" id="venn">
+          <div class="flow-nodes">
+            <button class="lens active" data-lens="bio" aria-describedby="lensCopy"><span data-i18n="lens-bio">Biological</span></button>
+            <button class="lens" data-lens="psy" aria-describedby="lensCopy"><span data-i18n="lens-psy">Psychological</span></button>
+            <button class="lens" data-lens="soc" aria-describedby="lensCopy"><span data-i18n="lens-soc">Social</span></button>
+          </div>
+          <svg class="flow-lines" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+            <line class="flow-line" data-lens="bio" x1="50" y1="0" x2="150" y2="60"></line>
+            <line class="flow-line" data-lens="psy" x1="150" y1="0" x2="150" y2="60"></line>
+            <line class="flow-line" data-lens="soc" x1="250" y1="0" x2="150" y2="60"></line>
+          </svg>
+          <div class="flow-plan" data-i18n="flow-plan">Treatment plan</div>
         </div>
 
         <div class="lens-copy" id="lensCopy" aria-live="polite">
           <h3 id="lensTitle">Biological</h3>
-          <p id="lensBody">Genetics, development, sleep, and how a particular body responds to a particular medication. Psychopharmacology and careful, ongoing medication management live here.</p>
-          <p class="lens-hint">Select a lens</p>
+          <p id="lensBody">Genetics, development, sleep, and how a particular body responds to a particular medication. Advanced psychopharmacology and careful, ongoing medication management live here.</p>
+          <p class="lens-hint" data-i18n="lens-hint">Select a lens</p>
         </div>
       </div>
     </div>
@@ -340,27 +357,27 @@
   <section class="band" id="focus">
     <div class="wrap split">
       <div>
-        <p class="eyebrow rise">Areas of focus</p>
-        <h2 class="rise">What people come <em>in with</em></h2>
-        <p class="lede rise">Dr. Chen works with children, adolescents, and adults, and sees patients at Bowman Medical Group in Beverly Hills.</p>
+        <p class="eyebrow rise" data-i18n="eyebrow-focus">Areas of focus</p>
+        <h2 class="rise" data-i18n="h2-focus">What people come <em>in with</em></h2>
+        <p class="lede rise" data-i18n="lede-focus">Dr. Chen works with children, adolescents, and adults, seeing patients both in-person at Bowman Medical Group in Beverly Hills and via telehealth throughout California.</p>
       </div>
       <div class="rise">
         <ul class="tag-list">
-          <li>Anxiety disorders</li>
-          <li>Obsessive-compulsive disorder</li>
-          <li>Depression</li>
-          <li>Bipolar disorder</li>
-          <li>Trauma-related conditions</li>
-          <li>ADHD</li>
-          <li>Tic disorders</li>
-          <li>Student mental health</li>
+          <li data-i18n="tag-1">Anxiety disorders</li>
+          <li data-i18n="tag-2">Obsessive-compulsive disorder</li>
+          <li data-i18n="tag-3">Depression</li>
+          <li data-i18n="tag-4">Bipolar disorder</li>
+          <li data-i18n="tag-5">Trauma-related conditions</li>
+          <li data-i18n="tag-6">ADHD</li>
+          <li data-i18n="tag-7">Tic disorders</li>
+          <li data-i18n="tag-8">Student mental health</li>
         </ul>
 
         <ul class="rule-list" style="margin-top:3rem">
-          <li><span class="k">Evaluation</span><span>Comprehensive psychiatric evaluation for children, adolescents, and adults</span></li>
-          <li><span class="k">Medication</span><span>Psychopharmacology and ongoing medication management</span></li>
-          <li><span class="k">Therapy</span><span>Care informed by CBT, DBT, and acceptance and commitment therapy</span></li>
-          <li><span class="k">Together</span><span>Close collaboration with psychotherapists so care stays joined up</span></li>
+          <li><span class="k" data-i18n="rule-k-1">Evaluation</span><span data-i18n="rule-v-1">Comprehensive psychiatric evaluation for children, adolescents, and adults</span></li>
+          <li><span class="k" data-i18n="rule-k-2">Medication</span><span data-i18n="rule-v-2">Advanced psychopharmacology and ongoing medication management</span></li>
+          <li><span class="k" data-i18n="rule-k-3">Therapy</span><span data-i18n="rule-v-3">Medication appointments are informed by psychodynamic, CBT, ERP, DBT, and ACT lenses</span></li>
+          <li><span class="k" data-i18n="rule-k-4">Together</span><span data-i18n="rule-v-4">Close collaboration with therapists, psychologists, educators, primary care doctors, and other medical specialists so care stays joined up</span></li>
         </ul>
       </div>
     </div>
@@ -370,16 +387,17 @@
   <section class="band band--mist" id="path">
     <div class="wrap split">
       <div>
-        <p class="eyebrow rise">Training &amp; background</p>
-        <h2 class="rise">The route <em>here</em></h2>
+        <p class="eyebrow rise" data-i18n="eyebrow-path">Training &amp; background</p>
+        <h2 class="rise" data-i18n="h2-path">The route <em>here</em></h2>
       </div>
       <div class="rise">
         <ul class="path">
-          <li><span class="where">Eastern Virginia Medical School</span><span class="what">Doctor of Medicine</span></li>
-          <li><span class="where">University of California, Davis</span><span class="what">Residency — General Psychiatry</span></li>
-          <li><span class="where">Harbor-UCLA</span><span class="what">Fellowship — Child &amp; Adolescent Psychiatry</span></li>
-          <li><span class="where">University of Michigan</span><span class="what">Assistant Professor — Childhood Anxiety &amp; OCD team</span></li>
-          <li><span class="where">Bowman Medical Group</span><span class="what">Practice — Beverly Hills, California</span></li>
+          <li><span class="where">University of Virginia</span><span class="what" data-i18n="path-what-1">Bachelor of Science</span></li>
+          <li><span class="where">Eastern Virginia Medical School</span><span class="what" data-i18n="path-what-2">Doctor of Medicine</span></li>
+          <li><span class="where">University of California, Davis</span><span class="what" data-i18n="path-what-3">Residency — General Psychiatry</span></li>
+          <li><span class="where">Harbor-UCLA</span><span class="what" data-i18n="path-what-4">Fellowship — Child &amp; Adolescent Psychiatry</span></li>
+          <li><span class="where">University of Michigan</span><span class="what" data-i18n="path-what-5">Assistant Professor — Childhood Anxiety &amp; OCD team, Student Mental Health</span></li>
+          <li><span class="where">Bowman Medical Group</span><span class="what" data-i18n="path-what-6">Practice — Beverly Hills, California</span></li>
         </ul>
       </div>
     </div>
@@ -388,23 +406,23 @@
   <!-- WRITING -->
   <section class="band band--deep" id="writing">
     <div class="wrap">
-      <p class="eyebrow rise">Writing, research &amp; speaking</p>
-      <h2 class="rise">Work outside <em>the office</em></h2>
+      <p class="eyebrow rise" data-i18n="eyebrow-writing">Writing, research &amp; speaking</p>
+      <h2 class="rise" data-i18n="h2-writing">Work outside <em>the office</em></h2>
       <div class="work rise">
         <article class="work-item">
-          <p class="work-kind">Article</p>
+          <p class="work-kind" data-i18n="work-kind-1">Article</p>
           <h3 class="work-title"><a href="https://www.sciencedirect.com/science/article/pii/S0890856725001613" target="_blank" rel="noopener">Challenges and Pearls of Evaluation and Treatment of Youth with Scrupulosity OCD</a></h3>
-          <p class="work-meta">Published research on assessing and treating scrupulosity in young people.</p>
+          <p class="work-meta" data-i18n="work-meta-1">Published research on assessing and treating scrupulosity in young people.</p>
         </article>
         <article class="work-item">
-          <p class="work-kind">Podcast</p>
+          <p class="work-kind" data-i18n="work-kind-2">Podcast</p>
           <h3 class="work-title"><a href="https://pediatricmeltdown.com/144-self-injurious-behaviours-in-youth-assessment-and-management/" target="_blank" rel="noopener">Self-Injurious Behaviors: Assessment and Interventions</a></h3>
-          <p class="work-meta">Pediatric Meltdown, with L. Gaggino — March 2023, Ann Arbor, MI.</p>
+          <p class="work-meta" data-i18n="work-meta-2">Pediatric Meltdown, with L. Gaggino — March 2023, Ann Arbor, MI.</p>
         </article>
         <article class="work-item">
-          <p class="work-kind">Grand Rounds</p>
-          <h3 class="work-title">Best practices in youth mental health care</h3>
-          <p class="work-meta">Guest speaker, Pediatric Department, Trinity Health Center.</p>
+          <p class="work-kind" data-i18n="work-kind-3">Grand Rounds</p>
+          <h3 class="work-title">Best practices in youth with OCD and other Anxiety Disorders</h3>
+          <p class="work-meta" data-i18n="work-meta-3">Guest speaker, Pediatric Department, Trinity Health Center.</p>
         </article>
       </div>
     </div>
@@ -414,13 +432,13 @@
   <section class="band">
     <div class="wrap split">
       <div class="rise">
-        <p class="lang-mark" lang="zh-Hans">中文</p>
-        <p class="lang-sub">Consultations in Mandarin Chinese</p>
+        <p class="lang-mark"><span class="en">EN</span><span class="slash">/</span><span lang="zh-Hant">中文</span></p>
+        <p class="lang-sub" data-i18n="lang-sub">Consultations in English and Mandarin Chinese</p>
       </div>
       <div>
-        <p class="eyebrow rise">Language &amp; culture</p>
-        <h2 class="rise">Care that travels <em>with a family</em></h2>
-        <p class="lede rise">Fluent in Mandarin Chinese, Dr. Chen works closely with individuals from multicultural backgrounds — on acculturation, intergenerational strain, and the psychological weight immigration places on a family. Care is shaped around what each person actually brings into the room.</p>
+        <p class="eyebrow rise" data-i18n="eyebrow-lang">Language &amp; culture</p>
+        <h2 class="rise" data-i18n="h2-lang">Multicultural <em>backgrounds</em></h2>
+        <p class="lede rise" data-i18n="lede-lang">Raised between Taiwan, New Zealand, and the U.S., and fluent in Mandarin Chinese, Dr. Chen works closely with individuals from multicultural backgrounds — on acculturation, intergenerational strain, and the psychological weight immigration places on a family. Care is shaped around what each person actually brings into the room.</p>
       </div>
     </div>
   </section>
@@ -428,71 +446,200 @@
   <!-- CONTACT -->
   <section class="band band--mist" id="contact">
     <div class="wrap">
-      <p class="eyebrow rise">Get in touch</p>
-      <h2 class="rise">New and returning patients <em>welcome</em></h2>
+      <p class="eyebrow rise" data-i18n="eyebrow-contact">Get in touch</p>
+      <h2 class="rise" data-i18n="h2-contact">New and returning patients <em>welcome</em></h2>
+      <p class="lede rise" data-i18n="lede-contact">Appointments are available both in-person at Bowman Medical Group in Beverly Hills and via telehealth throughout California.</p>
 
       <div class="contact-grid rise">
         <div>
-          <h3>Practice</h3>
+          <h3 data-i18n="contact-h-1">Practice</h3>
           <p>Bowman Medical Group<br>9777 Wilshire Blvd, Suite 707<br>Beverly Hills, CA 90212</p>
         </div>
         <div>
-          <h3>Appointments</h3>
+          <h3 data-i18n="contact-h-2">Appointments</h3>
           <p><a href="tel:3102764003">310-276-4003</a></p>
         </div>
         <div>
-          <h3>General inquiries</h3>
-          <p><a href="tel:3102764003">310-276-4003</a></p>
+          <h3 data-i18n="contact-h-3">General inquiries</h3>
+          <p><a href="tel:3102764003">310-276-4003</a><br><a href="mailto:info@bowmanmedicalgroup.com">info@bowmanmedicalgroup.com</a></p>
         </div>
         <div>
-          <h3>Profile</h3>
+          <h3 data-i18n="contact-h-4">Profile</h3>
           <p><a href="https://www.bowmanmedicalgroup.com/provider/carol-chen-md" target="_blank" rel="noopener">bowmanmedicalgroup.com</a></p>
         </div>
       </div>
 
-      <p class="note rise"><strong>On insurance.</strong> Some providers at the practice accept insurance, and some aspects of the practice are cash based. Call the office with questions about your coverage and they'll walk you through it.</p>
+      <p class="note rise" data-i18n="note-insurance"><strong>On insurance.</strong> Dr. Chen is in network with Aetna and provides a superbill for other out-of-network insurances. Call the office with questions about your coverage and they will walk you through it.</p>
+    </div>
+  </section>
+
+  <!-- ACCESS -->
+  <section class="band" id="access">
+    <div class="wrap">
+      <p class="eyebrow rise" data-i18n="eyebrow-access">Community access</p>
+      <h2 class="rise" data-i18n="h2-access">Care that reaches <em>further</em></h2>
+      <p class="lede rise" data-i18n="lede-access">Beyond her practice at Bowman Medical Group, Dr. Chen also provides psychiatric care at Medi-Cal contracted clinics, extending evaluation and treatment to underserved, lower-income communities across Los Angeles County.</p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Carol Chen, MD — Psychiatry, Beverly Hills</span>
+    <span data-i18n="footer-text">Carol Chen, MD — Psychiatry, Beverly Hills</span>
   </div>
 </footer>
 
 <script>
 (function(){
   var copy = {
-    bio:{t:"Biological",b:"Genetics, development, sleep, and how a particular body responds to a particular medication. Psychopharmacology and careful, ongoing medication management live here."},
-    psy:{t:"Psychological",b:"Thought patterns, coping, and skills. The work is informed by cognitive behavioral therapy, dialectical behavior therapy, and acceptance and commitment therapy, in close collaboration with psychotherapists."},
-    soc:{t:"Social",b:"Family, school, culture, and community — the world a person walks back into after the appointment ends, and often the one that decides whether a plan holds."}
-  };
-  var venn = document.getElementById('venn');
-  if(venn){
-    var lenses = venn.querySelectorAll('.lens');
-    var title = document.getElementById('lensTitle');
-    var bodyEl = document.getElementById('lensBody');
-
-    function show(key){
-      lenses.forEach(function(l){
-        var on = l.dataset.lens === key;
-        l.classList.toggle('active', on);
-        l.classList.toggle('dim', !on);
-      });
-      title.textContent = copy[key].t;
-      bodyEl.textContent = copy[key].b;
+    en:{
+      bio:{t:"Biological",b:"Genetics, development, sleep, and how a particular body responds to a particular medication. Advanced psychopharmacology and careful, ongoing medication management live here."},
+      psy:{t:"Psychological",b:"Thought patterns, coping, and skills. The work is informed by cognitive behavioral therapy, dialectical behavior therapy, and acceptance and commitment therapy, in close collaboration with psychotherapists."},
+      soc:{t:"Social",b:"Family, school, culture, and community — the world a person walks back into after the appointment ends, and often the one that decides whether a plan holds."}
+    },
+    zh:{
+      bio:{t:"生理",b:"遺傳、發育、睡眠，以及特定身體對特定藥物的反應方式。先進的精神藥理學與細緻、持續的藥物管理都屬於這一範疇。"},
+      psy:{t:"心理",b:"思維模式、應對方式與技能。此部分工作參考認知行為治療（CBT）、辯證行為治療（DBT）與接納承諾治療（ACT），並與心理治療師密切協作。"},
+      soc:{t:"社會",b:"家庭、學校、文化與社區——是患者離開診間後所返回的現實世界，也往往是決定治療方案能否奏效的關鍵。"}
     }
+  };
+
+  var dict = {
+    en:{
+      "nav-approach":"Evaluation Approach","nav-focus":"Focus","nav-path":"Training","nav-writing":"Writing","nav-access":"Access",
+      "hero-place":"Beverly Hills, California",
+      "hero-role":"Child, adolescent, and adult psychiatry",
+      "hero-lede":"Board-certified psychiatrist with more than 10 years of clinical experience, offering comprehensive psychiatric evaluation and medication management for anxiety, OCD, ADHD, mood disorders, and trauma.",
+      "cred-1":"Board-certified in Psychiatry","cred-2":"Board-certified in Child &amp; Adolescent Psychiatry",
+      "cred-4":"English &amp; Mandarin Chinese",
+      "eyebrow-approach":"Evaluation Approach","h2-approach":"Three lenses on <em>the same person</em>",
+      "lede-approach":"Dr. Chen practices holistically and collaboratively, reading biological, psychological, and social factors together rather than treating any one of them alone. Each lens feeds into a single individual treatment plan.",
+      "lens-bio":"Biological","lens-psy":"Psychological","lens-soc":"Social","flow-plan":"Treatment plan","lens-hint":"Select a lens",
+      "eyebrow-focus":"Areas of focus","h2-focus":"What people come <em>in with</em>",
+      "lede-focus":"Dr. Chen works with children, adolescents, and adults, seeing patients both in-person at Bowman Medical Group in Beverly Hills and via telehealth throughout California.",
+      "tag-1":"Anxiety disorders","tag-2":"Obsessive-compulsive disorder","tag-3":"Depression","tag-4":"Bipolar disorder",
+      "tag-5":"Trauma-related conditions","tag-6":"ADHD","tag-7":"Tic disorders","tag-8":"Student mental health",
+      "rule-k-1":"Evaluation","rule-v-1":"Comprehensive psychiatric evaluation for children, adolescents, and adults",
+      "rule-k-2":"Medication","rule-v-2":"Advanced psychopharmacology and ongoing medication management",
+      "rule-k-3":"Therapy","rule-v-3":"Medication appointments are informed by psychodynamic, CBT, ERP, DBT, and ACT lenses",
+      "rule-k-4":"Together","rule-v-4":"Close collaboration with therapists, psychologists, educators, primary care doctors, and other medical specialists so care stays joined up",
+      "eyebrow-path":"Training &amp; background","h2-path":"The route <em>here</em>",
+      "path-what-1":"Bachelor of Science","path-what-2":"Doctor of Medicine","path-what-3":"Residency — General Psychiatry",
+      "path-what-4":"Fellowship — Child &amp; Adolescent Psychiatry","path-what-5":"Assistant Professor — Childhood Anxiety &amp; OCD team, Student Mental Health",
+      "path-what-6":"Practice — Beverly Hills, California",
+      "eyebrow-writing":"Writing, research &amp; speaking","h2-writing":"Work outside <em>the office</em>",
+      "work-kind-1":"Article","work-meta-1":"Published research on assessing and treating scrupulosity in young people.",
+      "work-kind-2":"Podcast","work-meta-2":"Pediatric Meltdown, with L. Gaggino — March 2023, Ann Arbor, MI.",
+      "work-kind-3":"Grand Rounds","work-meta-3":"Guest speaker, Pediatric Department, Trinity Health Center.",
+      "lang-sub":"Consultations in English and Mandarin Chinese",
+      "eyebrow-lang":"Language &amp; culture","h2-lang":"Multicultural <em>backgrounds</em>",
+      "lede-lang":"Raised between Taiwan, New Zealand, and the U.S., and fluent in Mandarin Chinese, Dr. Chen works closely with individuals from multicultural backgrounds — on acculturation, intergenerational strain, and the psychological weight immigration places on a family. Care is shaped around what each person actually brings into the room.",
+      "eyebrow-contact":"Get in touch","h2-contact":"New and returning patients <em>welcome</em>",
+      "lede-contact":"Appointments are available both in-person at Bowman Medical Group in Beverly Hills and via telehealth throughout California.",
+      "contact-h-1":"Practice","contact-h-2":"Appointments","contact-h-3":"General inquiries","contact-h-4":"Profile",
+      "note-insurance":"<strong>On insurance.</strong> Dr. Chen is in network with Aetna and provides a superbill for other out-of-network insurances. Call the office with questions about your coverage and they will walk you through it.",
+      "eyebrow-access":"Community access","h2-access":"Care that reaches <em>further</em>",
+      "lede-access":"Beyond her practice at Bowman Medical Group, Dr. Chen also provides psychiatric care at Medi-Cal contracted clinics, extending evaluation and treatment to underserved, lower-income communities across Los Angeles County.",
+      "footer-text":"Carol Chen, MD — Psychiatry, Beverly Hills"
+    },
+    zh:{
+      "nav-approach":"評估方法","nav-focus":"專長領域","nav-path":"培訓經歷","nav-writing":"著作與演講","nav-access":"社區服務",
+      "hero-place":"加利福尼亞州比佛利山莊",
+      "hero-role":"兒童、青少年及成人精神科",
+      "hero-lede":"美國精神科委員會認證醫師，擁有超過10年臨床經驗，為焦慮症、強迫症、注意力不足過動症（ADHD）、情緒障礙及創傷相關疾患提供全面的精神科評估與藥物治療管理。",
+      "cred-1":"美國精神科委員會認證","cred-2":"美國兒童與青少年精神科委員會認證",
+      "cred-4":"英語與中文",
+      "eyebrow-approach":"評估方法","h2-approach":"看見<em>同一個人</em>的三重視角",
+      "lede-approach":"陳醫師採用整體、協作的診療方式，將生理、心理與社會因素一併納入考量，而非孤立地處理其中任何一項。每一個視角都匯入同一份個人化的治療方案。",
+      "lens-bio":"生理","lens-psy":"心理","lens-soc":"社會","flow-plan":"治療方案","lens-hint":"選擇一個視角",
+      "eyebrow-focus":"專長領域","h2-focus":"患者<em>因何而來</em>",
+      "lede-focus":"陳醫師為兒童、青少年及成人提供診療服務，可親自前往比佛利山莊的鮑曼醫療集團（Bowman Medical Group）看診，也可透過遠距醫療於加州境內看診。",
+      "tag-1":"焦慮症","tag-2":"強迫症","tag-3":"憂鬱症","tag-4":"雙相情緒障礙症",
+      "tag-5":"創傷相關疾患","tag-6":"注意力不足過動症（ADHD）","tag-7":"抽動症","tag-8":"學生心理健康",
+      "rule-k-1":"評估","rule-v-1":"為兒童、青少年及成人提供全面的精神科評估",
+      "rule-k-2":"藥物治療","rule-v-2":"先進的精神藥理學與持續的藥物管理",
+      "rule-k-3":"療法","rule-v-3":"複診評估融合精神動力學、認知行為治療（CBT）、暴露與反應預防治療（ERP）、辯證行為治療（DBT）與接納承諾治療（ACT）等多重視角",
+      "rule-k-4":"協作","rule-v-4":"與心理治療師、心理學家、教育工作者、基層醫療醫師及其他專科醫師密切協作，確保治療環環相扣",
+      "eyebrow-path":"培訓與背景","h2-path":"成為醫師的<em>歷程</em>",
+      "path-what-1":"理學學士","path-what-2":"醫學博士","path-what-3":"住院醫師訓練 — 一般精神科",
+      "path-what-4":"專科訓練 — 兒童與青少年精神科","path-what-5":"助理教授 — 兒童焦慮與強迫症團隊、學生心理健康",
+      "path-what-6":"執業 — 加利福尼亞州比佛利山莊",
+      "eyebrow-writing":"著作、研究與演講","h2-writing":"診間<em>之外</em>的工作",
+      "work-kind-1":"文章","work-meta-1":"已發表研究，探討青少年心理宗教強迫症（scrupulosity）的評估與治療。",
+      "work-kind-2":"播客","work-meta-2":"《Pediatric Meltdown》播客，與 L. Gaggino 合作 — 2023年3月，密西根州安娜堡。",
+      "work-kind-3":"教學查房","work-meta-3":"特邀演講嘉賓，Trinity Health Center 兒科部門。",
+      "lang-sub":"提供英語與中文問診",
+      "eyebrow-lang":"語言與文化","h2-lang":"<em>多元文化</em>背景",
+      "lede-lang":"陳醫師成長於台灣、紐西蘭與美國之間，精通中文，長期與來自多元文化背景的個案密切合作——涉及文化適應、代間張力，以及移民為家庭帶來的心理壓力。診療方案會根據每位患者實際帶入診間的獨特背景來量身規劃。",
+      "eyebrow-contact":"聯絡我們","h2-contact":"<em>歡迎</em>新舊患者",
+      "lede-contact":"門診提供親自前往比佛利山莊鮑曼醫療集團（Bowman Medical Group）看診，或透過遠距醫療於加州境內看診。",
+      "contact-h-1":"診所","contact-h-2":"預約","contact-h-3":"一般諮詢","contact-h-4":"醫師簡介",
+      "note-insurance":"<strong>關於保險。</strong>陳醫師為 Aetna 保險的特約醫師，其他非特約保險可提供 superbill（自費收據）以便向保險公司申請理賠。如對保險範圍有疑問，請致電診所，工作人員將為您詳細說明。",
+      "eyebrow-access":"社區服務","h2-access":"讓關懷<em>觸及更遠</em>",
+      "lede-access":"除了在比佛利山莊鮑曼醫療集團（Bowman Medical Group）的診療工作外，陳醫師也在 Medi-Cal 特約診所提供精神科服務，將評估與治療延伸至洛杉磯郡內服務不足的低收入社區。",
+      "footer-text":"Carol Chen, MD — 精神科，比佛利山莊"
+    }
+  };
+
+  var currentLang = localStorage.getItem('lang') || 'en';
+  var i18nEls = document.querySelectorAll('[data-i18n]');
+  var langToggle = document.getElementById('langToggle');
+
+  var venn = document.getElementById('venn');
+  var lenses = venn ? venn.querySelectorAll('.lens') : [];
+  var lines = venn ? venn.querySelectorAll('.flow-line') : [];
+  var lensTitleEl = document.getElementById('lensTitle');
+  var lensBodyEl = document.getElementById('lensBody');
+  var currentLensKey = 'bio';
+
+  function showLens(key){
+    currentLensKey = key;
     lenses.forEach(function(l){
-      l.addEventListener('mouseenter', function(){ show(l.dataset.lens); });
-      l.addEventListener('focus', function(){ show(l.dataset.lens); });
-      l.addEventListener('click', function(){ show(l.dataset.lens); });
+      var on = l.dataset.lens === key;
+      l.classList.toggle('active', on);
+      l.classList.toggle('dim', !on);
+    });
+    lines.forEach(function(l){
+      var on = l.dataset.lens === key;
+      l.classList.toggle('active', on);
+      l.classList.toggle('dim', !on);
+    });
+    lensTitleEl.textContent = copy[currentLang][key].t;
+    lensBodyEl.textContent = copy[currentLang][key].b;
+  }
+
+  function applyLang(lang){
+    currentLang = lang;
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+    i18nEls.forEach(function(el){
+      var key = el.dataset.i18n;
+      if(dict[lang][key] !== undefined) el.innerHTML = dict[lang][key];
+    });
+    if(langToggle) langToggle.textContent = lang === 'zh' ? 'EN' : '中文';
+    if(venn) showLens(currentLensKey);
+    localStorage.setItem('lang', lang);
+  }
+
+  if(langToggle){
+    langToggle.addEventListener('click', function(){
+      applyLang(currentLang === 'zh' ? 'en' : 'zh');
+    });
+  }
+
+  applyLang(currentLang);
+
+  if(venn){
+    lenses.forEach(function(l){
+      l.addEventListener('mouseenter', function(){ showLens(l.dataset.lens); });
+      l.addEventListener('focus', function(){ showLens(l.dataset.lens); });
+      l.addEventListener('click', function(){ showLens(l.dataset.lens); });
     });
     venn.addEventListener('mouseleave', function(){
       lenses.forEach(function(l){ l.classList.remove('dim'); });
+      lines.forEach(function(l){ l.classList.remove('dim'); });
     });
-    show('bio');
     lenses.forEach(function(l){ l.classList.remove('dim'); });
+    lines.forEach(function(l){ l.classList.remove('dim'); });
   }
 
   var items = document.querySelectorAll('.rise');
